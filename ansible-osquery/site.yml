@@ -1,5 +1,5 @@
 ---
-- name: Project OSquery  
+- name: Osquery Project
   hosts: all
   remote_user: gneto    
   gather_facts: True
