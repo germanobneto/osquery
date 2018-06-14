@@ -1,0 +1,17 @@
+---
+config_plugin: filesystem
+logger_plugin: syslog
+logger_path: /var/log/osquery
+disable_logging: false
+log_result_events: true
+schedule_splay_percent: 10
+pidfile: /var/osquery/osquery.pidfile
+events_expiry: 3600
+database_path: /var/osquery/osquery.db
+disable_tables: time 
+debug: false
+verbose_debug: false
+worker_threads: 4
+enable_monitor: true
+alienvault: 10.160.0.134
+alienvault_port: 514

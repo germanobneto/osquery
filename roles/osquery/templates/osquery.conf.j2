@@ -1,0 +1,72 @@
+{
+  "options": {
+    "config_plugin": "{{ config_plugin }}",
+    "logger_plugin": "{{ logger_plugin }}",
+    "logger_path": "{{ logger_path }}",
+    //"disable_logging": "{{ disable_logging }}",
+    //"log_result_events": "{{ log_result_events }}",
+    //"schedule_splay_percent": "{{ schedule_splay_percent }}",
+    //"pidfile": "{{ pidfile }}",
+    "events_expiry": "{{ events_expiry }}",
+    "database_path": "{{ database_path }}",
+    //"disable_tables": "{{ disable_tables }}",
+    "debug": "{{ debug }}",
+    "verbose_debug": "{{ verbose_debug }}",
+    "worker_threads": "{{ worker_threads }}",
+    "enable_monitor": "{{ enable_monitor }}"
+
+  },
+  "schedule": {
+        "file_events": {
+          "query": "SELECT * from file_events;",
+          "removed": false,
+          "interval": 300
+        },
+        "users": {
+          "query": "SELECT * from users;",
+          "interval": 30
+        },
+        "listening_ports": {
+          "query": "SELECT uid, name, port, protocol FROM listening_ports l, processes p WHERE l.pid=p.pid;",
+          "interval": 30
+        },
+        "crontab": {
+          "query": "SELECT * from crontab;",
+          "interval": 300
+        },
+        "kernel_modules": {
+          "query": "SELECT name,size,status from kernel_modules;",
+          "interval": 30
+        },
+        "processes": {
+          "query": "SELECT pid, name, path, cmdline from processes;",
+          "interval": 30
+        },
+        "yara_events": {
+          "query": "SELECT * from yara_events;",
+          "interval": 5
+        },
+        "suid_bin": {
+          "query": "select * from suid_bin;",
+          "interval": 60
+        }
+  },    
+  "file_paths": {
+    "etc": [
+      "/etc/%%"
+    ],
+    "tmp": [
+      "/tmp/%%"
+    ],
+    "homes": [
+      "/root/%%",
+      "/home/%/%%"
+    ],
+    "file_accesses": [
+      "homes", "etc"
+    ],
+    "system_binaries": [ 
+      "/usr/bin/%", "/usr/sbin/%" 
+    ]
+  } 
+}

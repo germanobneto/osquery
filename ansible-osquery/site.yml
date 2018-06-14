@@ -1,0 +1,9 @@
+---
+- name: Poject Abastecimento Install and Deploy
+  hosts: all
+  remote_user: gneto    
+  gather_facts: True
+  serial: 1
+  become: yes
+  roles:
+    - osquery      

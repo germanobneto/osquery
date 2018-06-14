@@ -1,0 +1,15 @@
+---
+ - name: restart osquery 
+   systemd:
+     name: osqueryd.service 
+     daemon_reload: yes
+     enabled: yes
+     state: restarted
+
+ - name: restart rsyslog 
+   systemd:
+     name: rsyslog.service 
+     daemon_reload: yes
+     enabled: yes
+     state: restarted
+     

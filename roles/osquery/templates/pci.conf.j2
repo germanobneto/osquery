@@ -1,0 +1,25 @@
+##### Rsyslog PCI #####
+auth,authpriv.*         /var/log/auth.log
+*.*;auth,authpriv.none  -/var/log/syslog
+cron.*                 /var/log/cron.log
+daemon.*               -/var/log/daemon.log
+kern.*                -/var/log/kern.log
+lpr.*                 -/var/log/lpr.log
+mail.*                -/var/log/mail.log
+user.*                -/var/log/user.log
+
+mail.info            -/var/log/mail.info
+mail.warn            -/var/log/mail.warn
+mail.err              /var/log/mail.err
+
+news.crit             /var/log/news/news.crit
+news.err              /var/log/news/news.err
+news.notice          -/var/log/news/news.notice
+
+daemon.*;mail.*;\
+        news.err;\
+        *.=debug;*.=info;\
+        *.=notice;*.=warn  |/dev/xconsole
+
+##### Alienvault #######
+*.* @{{ alienvault }}:{{ alienvault_port }}
