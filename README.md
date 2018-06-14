@@ -1,0 +1,2 @@
+# osquery
+Ansible Osquery
