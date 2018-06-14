@@ -1,5 +1,5 @@
 ---
-- name: Poject Abastecimento Install and Deploy
+- name: Project OSquery  
   hosts: all
   remote_user: gneto    
   gather_facts: True
